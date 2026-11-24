@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#101f55">
 <meta name="description" content="જીત કોમ્પ્યુટર – વાવમાં સેલ્સ અને સર્વિસ, ઝેરોક્સ, પ્રિન્ટિંગ, ઓનલાઇન ફોર્મ, સરકારી કાર્ડ, બેંકિંગ સહાય અને જમીનના દસ્તાવેજો માટે સંપર્ક કરો.">
 <title>જીત કોમ્પ્યુટર | સેલ્સ & સર્વિસ | વાવ – થરાદ</title>
+<link rel="icon" href="logo.jpg">
 <style>
 :root{--navy:#101f55;--navy2:#1b2f7a;--accent:#ff8a00;--bg:#f4f6fc;--card:#fff;--text:#1c2340;--muted:#5b6385}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -23,6 +24,7 @@ header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;box-sh
 .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700}
 .logo b{background:var(--accent);color:#fff;border-radius:10px;padding:6px 10px}
+.logoimg{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.4)}
 .logo small{display:block;font-weight:400;font-size:12px;opacity:.8}
 nav ul{display:flex;gap:22px;list-style:none}
 nav a{padding:6px 2px;border-bottom:2px solid transparent;transition:.25s}
@@ -148,7 +150,7 @@ footer{background:var(--navy);color:#fff;text-align:center;padding:30px 0;font-s
 </div></div>
 
 <header><div class="container nav">
- <a href="#home" class="logo"><b>JC</b><span>જીત કોમ્પ્યુટર<small>સેલ્સ & સર્વિસ</small></span></a>
+ <a href="#home" class="logo"><img src="logo.jpg" alt="જીત કોમ્પ્યુટર" class="logoimg" onerror="this.outerHTML='<b>JC</b>'"><span>જીત કોમ્પ્યુટર<small>સેલ્સ & સર્વિસ</small></span></a>
  <button class="burger" id="burger" aria-label="menu">☰</button>
  <nav><ul id="menu">
   <li><a href="#home">હોમ</a></li>
@@ -325,47 +327,4 @@ albums.forEach((a,idx)=>{
 function openAlbum(i){
  const a=albums[i];
  albModal.innerHTML=`<button class="close" onclick="closeAlbum()">✕</button><h3>${a.icon} ${a.name}</h3>`+
-  (a.photos.length?`<div class="thumbs">${a.photos.map((p,k)=>`<img src="${p}" loading="lazy" alt="" data-k="${k}">`).join("")}</div>`:`<div class="empty">📷 ફોટા ટૂંક સમયમાં ઉમેરાશે</div>`);
- albModal.querySelectorAll(".thumbs img").forEach(im=>im.onclick=()=>openLb(a.photos,+im.dataset.k));
- albOverlay.classList.add("show");
-}
-function closeAlbum(){albOverlay.classList.remove("show")}
-albOverlay.addEventListener("click",e=>{if(e.target===albOverlay)closeAlbum()});
-
-/* ---- lightbox (prev/next + swipe) ---- */
-const lb=document.getElementById("lightbox");
-let cur=[],ci=0;
-function showLb(){document.getElementById("lbimg").src=cur[ci];document.getElementById("lbcount").textContent=(ci+1)+" / "+cur.length}
-function openLb(list,i){cur=list;ci=i;showLb();lb.classList.add("show")}
-function stepLb(d){ci=(ci+d+cur.length)%cur.length;showLb()}
-document.getElementById("lbprev").onclick=e=>{e.stopPropagation();stepLb(-1)};
-document.getElementById("lbnext").onclick=e=>{e.stopPropagation();stepLb(1)};
-lb.addEventListener("click",e=>{if(e.target===lb)lb.classList.remove("show")});
-let sx=0;
-lb.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
-lb.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)stepLb(dx<0?1:-1)});
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){closeModal();closeAlbum();lb.classList.remove("show")}
- if(lb.classList.contains("show")){if(e.key==="ArrowRight")stepLb(1);if(e.key==="ArrowLeft")stepLb(-1)}
-});
-
-/* ---- mobile menu ---- */
-const menu=document.getElementById("menu");
-document.getElementById("burger").onclick=()=>menu.classList.toggle("open");
-menu.querySelectorAll("a").forEach(a=>a.onclick=()=>menu.classList.remove("open"));
-
-/* ---- hero bubbles ---- */
-const bub=document.getElementById("bubbles");
-for(let i=0;i<14;i++){
- const b=document.createElement("div");b.className="bubble";
- const s=20+Math.random()*70;
- b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:-100px;animation-duration:${8+Math.random()*10}s;animation-delay:${-Math.random()*10}s`;
- bub.appendChild(b);
-}
-
-/* ---- scroll reveal ---- */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-</script>
-</body>
-</html>
+  (a.photos.length?`<div 
