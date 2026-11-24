@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#101f55">
 <meta name="description" content="જીત કોમ્પ્યુટર – વાવમાં સેલ્સ અને સર્વિસ, ઝેરોક્સ, પ્રિન્ટિંગ, ઓનલાઇન ફોર્મ, સરકારી કાર્ડ, બેંકિંગ સહાય અને જમીનના દસ્તાવેજો માટે સંપર્ક કરો.">
 <title>જીત કોમ્પ્યુટર | સેલ્સ & સર્વિસ | વાવ – થરાદ</title>
-<link rel="icon" href="logo.jpg">
 <style>
 :root{--navy:#101f55;--navy2:#1b2f7a;--accent:#ff8a00;--bg:#f4f6fc;--card:#fff;--text:#1c2340;--muted:#5b6385}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -327,4 +326,4 @@ function openAlbum(i){
  const a=albums[i];
  albModal.innerHTML=`<button class="close" onclick="closeAlbum()">✕</button><h3>${a.icon} ${a.name}</h3>`+
   (a.photos.length?`<div class="thumbs">${a.photos.map((p,k)=>`<img src="${p}" loading="lazy" alt="" data-k="${k}">`).join("")}</div>`:`<div class="empty">📷 ફોટા ટૂંક સમયમાં ઉમેરાશે</div>`);
- albModal.querySelectorAll(".thumbs img").fo
+ albModal.querySelectorAll(".thumbs img").forEach(im=>im.onclick=()=>openLb(a.
