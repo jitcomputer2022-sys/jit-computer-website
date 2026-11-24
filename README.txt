@@ -10,3 +10,5 @@ How to publish on Cloudflare Pages (Direct Upload):
 4. Deploy the site. The root of the uploaded site must contain index.html.
 
 Before publishing, please verify the displayed phone numbers and all prices. The phone numbers are transcribed from supplied posters; 70413 41410 appears on an older poster and is marked as an alternative contact. Prices are based on the previously supplied price list and may change. Government fees and approvals may be separate.
+
+https://github.com/jitcomputer2022-sys/jit-computer-website/blob/ac3b371389884eb03ae4bfc8920a4a2fb490af3d/logo.png
