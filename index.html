@@ -24,7 +24,6 @@ header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;box-sh
 .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700}
 .logo b{background:var(--accent);color:#fff;border-radius:10px;padding:6px 10px}
-.logoimg{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.4)}
 .logo small{display:block;font-weight:400;font-size:12px;opacity:.8}
 nav ul{display:flex;gap:22px;list-style:none}
 nav a{padding:6px 2px;border-bottom:2px solid transparent;transition:.25s}
@@ -150,7 +149,7 @@ footer{background:var(--navy);color:#fff;text-align:center;padding:30px 0;font-s
 </div></div>
 
 <header><div class="container nav">
- <a href="#home" class="logo"><img src="logo.jpg" alt="જીત કોમ્પ્યુટર" class="logoimg" onerror="this.outerHTML='<b>JC</b>'"><span>જીત કોમ્પ્યુટર<small>સેલ્સ & સર્વિસ</small></span></a>
+ <a href="#home" class="logo"><b>JC</b><span>જીત કોમ્પ્યુટર<small>સેલ્સ & સર્વિસ</small></span></a>
  <button class="burger" id="burger" aria-label="menu">☰</button>
  <nav><ul id="menu">
   <li><a href="#home">હોમ</a></li>
@@ -327,4 +326,5 @@ albums.forEach((a,idx)=>{
 function openAlbum(i){
  const a=albums[i];
  albModal.innerHTML=`<button class="close" onclick="closeAlbum()">✕</button><h3>${a.icon} ${a.name}</h3>`+
-  (a.photos.length?`<div 
+  (a.photos.length?`<div class="thumbs">${a.photos.map((p,k)=>`<img src="${p}" loading="lazy" alt="" data-k="${k}">`).join("")}</div>`:`<div class="empty">📷 ફોટા ટૂંક સમયમાં ઉમેરાશે</div>`);
+ albModal.querySelectorAll(".thumbs img").fo
